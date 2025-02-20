@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Task Manager</h1>
+
+        <div class="header">
+            <input type="file" id="csvFileInput" accept=".csv">
+            <button class="export_button" onclick="exportCSV()">Export CSV</button>
+        </div>        
+        
+        <div class="panel">
+            <!-- Sort Section -->
+
+            <div class="panel_box">
+                <label for="sortBy">Sort by:</label>
+                <select id="sortBy" onchange="sortTasks()">
+                    <option value="task">Task Name</option>
+                    <option value="dueDate">Due Date</option>
+                    <option value="importance">Importance</option>
+                </select>
+            </div>
+
+            <div class="panel_box">
+                <label for="sortOrder">Sort Order:</label>
+                <select id="sortOrder" onchange="sortTasks()">
+                    <option value="asc">Ascending</option>
+                    <option value="desc">Descending</option>
+                </select>
+            </div>
+
+            <!-- Filter by Importance -->
+
+            <div class="panel_box">
+                <label for="importanceFilter">Filter by Importance:</label>
+                <select id="importanceFilter" onchange="filterByImportance()">
+                    <option value="">All</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- mobile panel -->
+        <div id="mobile_panel" class="tag_container closed">
+            <div class="tag_close" onclick="handleMobilePanel()">Panel</div>
+            <div class="tag">
+                <!-- Sort Section -->
+
+                <div class="panel_box">
+                    <label for="sortBy">Sort by:</label>
+                    <select id="sortBy" onchange="sortTasks()">
+                        <option value="task">Task Name</option>
+                        <option value="dueDate">Due Date</option>
+                        <option value="importance">Importance</option>
+                    </select>
+                </div>
+
+                <div class="panel_box">
+                    <label for="sortOrder">Sort Order:</label>
+                    <select id="sortOrder" onchange="sortTasks()">
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                    </select>
+                </div>
+
+                <!-- Filter by Importance -->
+
+                <div class="panel_box">
+                    <label for="importanceFilter">Filter by Importance:</label>
+                    <select id="importanceFilter" onchange="filterByImportance()">
+                        <option value="">All</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="task_container">
+            <div class="task_box">
+                <div id="taskList_header">
+                    <div class="taskField">Task</div>
+                    <div class="taskField">Status</div>
+                    <div class="taskField">Date created</div>
+                    <div class="taskField">Due date</div>
+                    <div class="taskField">Importance</div>
+                    <div class="taskField">Actions</div>
+                </div>
+                <div id="taskList"></div>                
+            </div>
+            <div id="no_data">No tasks</div>            
+        </div>
+    </div>
+
+    <div class="add_task_container">
+        <button class="add_task_button" onclick="addTask()">Add Task</button>  
+    </div>
+
+    <footer className="text-center">
+        <h6>Copyright © <span id="copyright_year"></span> Oana Popescu. All rights reserved.</h6>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="scripts/index.js"></script>
+</body>
+</html>

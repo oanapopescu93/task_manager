@@ -1,0 +1,256 @@
+:root {    
+    --bg:#f4f4f4;
+    --color:#333;
+
+	--accent: #189cb0;
+    --accent_color: white;    
+
+    --input: #ccc;
+    --input_color: white;
+    --hover: #acacac;  
+
+    --red: red;
+    --darkred: darkred;
+
+    --padding: 10px;
+    --padding_small: 5px;
+    --padding_big: 20px;
+    --radius:5px;    
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: var(--bg);
+    color: var(--color);
+    padding: var(--padding_big);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100%;
+    max-width: 1240px;
+    margin: 0px auto;
+}
+
+h1 {    
+    margin-bottom: 20px;
+}
+
+button, input, select {
+    padding: var(--padding_small);
+    font-size: 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--input);
+}
+
+input[type="text"], input[type="datetime-local"] {
+    width: 100%;
+    max-width: 190px;
+    height: 30px;
+}
+
+select {
+    width: 100%;
+    max-width: 150px;
+    height: 30px;
+}
+
+button {    
+    border: solid 1px var(--accent);
+    background-color: var(--accent);
+    color: var(--accent_color);
+    padding: var(--padding_small) var(--padding);
+    cursor: pointer;
+    border-radius: var(--radius);
+    height: 30px;
+}
+button:hover {    
+    background-color: transparent;
+    color: var(--accent);
+}
+
+/* panel */
+.panel{
+    background-color: var(--input);
+    color: var(--color);
+    border-radius: var(--radius);
+    margin: var(--padding) 0px;
+}
+.panel_box{
+    display: inline-block;
+    vertical-align: middle;
+    width: 33.33%;
+    padding: var(--padding_small);
+    margin-right: -5px;
+}
+
+/* task list */
+.task_container{
+    overflow-y: auto;
+    max-height: 400px;
+    margin-bottom: var(--padding);
+}
+.task_box{
+    width: 1200px;
+    margin: 0px auto;
+    text-align: left;
+}
+.taskField{
+    display: inline-block;
+    vertical-align: top;
+    padding: var(--padding_small);
+    margin-right: -5px;
+    width: 200px;
+}
+#taskList_header .taskField{
+    background-color: #333;
+    color: var(--input);
+    border-right: solid 2px var(--input);
+}
+#taskList_header .taskField:last-child{
+    border-right: solid 0px transparent;
+}
+#taskList .taskField{
+    background-color: var(--input);
+    border-right: solid 2px var(--color);
+    height: 40px;
+}
+#taskList .taskField:last-child{
+    border-right: solid 0px transparent;
+}
+.taskField label{
+    display: none;
+}
+.taskField .date_created{
+    line-height: 32px;
+}
+.delete_button{
+    background-color: var(--red);
+    border: solid 1px var(--red);
+    color: var(--input_color);
+}
+.delete_button:hover{
+    background-color: var(--darkred);
+    border: solid 1px var(--darkred);
+    color: var(--red);
+}
+
+#no_data{
+    padding: var(--padding);
+    text-align: center;
+}
+
+#taskList .taskItem:hover .taskField{
+    background-color: var(--hover);
+}
+
+.add_task_container{
+    text-align: center;
+}
+
+/* mobile panel */
+.tag_container {
+    position: fixed;
+    z-index: 9999;
+    top: 135px;
+    right: 0px;
+    width: 300px;
+    transition: 0.4s;
+    display: none;
+}
+.tag_container.closed {
+    right: -220px;
+}
+.tag_close {
+    position: relative;
+    z-index: 1;
+    background: var(--input);
+    border: solid 1px var(--input);
+    color: var(--color);
+    border-radius: var(--radius) 0px 0px var(--radius);
+    width: 80px;
+    height: 30px;
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: -5px;
+    padding: 0px var(--padding);
+    cursor: pointer;
+}
+.tag_close:hover{
+    background: var(--hover);
+    border: solid 1px var(--hover);
+}
+.tag {
+    position: relative;
+    z-index: 1;
+    background: var(--input);
+    color: var(--color);
+    border-radius: 0px 0px 0px var(--radius);
+    width: 220px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: -5px;
+    padding: var(--padding);
+}
+.tag .panel_box{
+    display: block;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    body{
+        padding: var(--padding);
+    }
+    .task_box{
+        width: 100%;
+    }
+    .panel, #taskList_header{
+        display: none;
+    }
+    .taskItem{
+        border-bottom: solid 1px var(--color);
+        padding-bottom: var(--padding);
+        margin-bottom: var(--padding);
+    }
+    .taskItem:last-child{
+        border-bottom: solid 0px transparent;
+    }
+    #taskList .taskField{
+        display: block;
+        width: 100%;
+        height: auto;
+        background-color: transparent;
+        border-right: solid 0px transparent
+    }
+    #taskList .taskItem:hover .taskField{
+        background-color: transparent;
+    }
+    .taskField label {
+        display: inline-block;
+        margin-right: 5px;        
+    }
+    #csvFileInput{
+        display: block;
+        margin-bottom: 5px;
+    }    
+    .export_button{
+        display: block;
+    }
+    .add_task_button{
+        display: inline-block;
+    }
+    .tag_container{
+        display: block;
+    }
+    .tag_container label{
+        font-size: 12px;
+        line-height: 12px;
+    }
+}
